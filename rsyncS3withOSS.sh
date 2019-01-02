@@ -12,8 +12,8 @@ if [ ! $# -eq 0 ]; then
         cd $bucket_name_from_args
         echo "Syncing in bucket: ${PWD##*/}"
         #3- open each dir and sync a bucket with each folder
-        aws s3 cp s3://$bucket_name_from_args . --recursive
-
+        #aws s3 cp s3://$bucket_name_from_args . --recursive
+        aws s3 sync s3://$bucket_name_from_args . --delete
         #4- make oss bucket with eachfolder with if condation to check if the bucket is exist or not
         aliyun oss mb oss://$bucket_name_from_args --acl=public-read
         #5- sync each folder with a oss bucket
@@ -29,8 +29,8 @@ else
         cd $bucket
         echo "Syncing in bucket: ${PWD##*/}"
         #3- open each dir and sync a bucket with each folder
-        aws s3 cp s3://$bucket . --recursive
-
+        #aws s3 cp s3://$bucket . --recursive
+        aws s3 sync s3://$bucket . --delete
         #4- make oss bucket with eachfolder with if condation to check if the bucket is exist or not
         aliyun oss mb oss://$bucket --acl=public-read
         #5- sync each folder with a oss bucket
