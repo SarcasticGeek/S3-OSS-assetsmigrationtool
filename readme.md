@@ -1,3 +1,3 @@
 # Install 
-AWS CLI 
-Aliyun CLI
+- AWS CLI 
+- Aliyun CLI

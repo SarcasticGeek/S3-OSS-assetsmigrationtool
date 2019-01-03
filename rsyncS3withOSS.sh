@@ -17,7 +17,7 @@ if [ ! $# -eq 0 ]; then
         #4- make oss bucket with eachfolder with if condation to check if the bucket is exist or not
         aliyun oss mb oss://$bucket_name_from_args --acl=public-read
         #5- sync each folder with a oss bucket
-        aliyun oss cp . oss://$bucket_name_from_args -r
+        aliyun oss cp . oss://$bucket_name_from_args -r --force
         cd ..
     else
         echo "ERR: the bucket does not exist in S3"    
@@ -34,7 +34,7 @@ else
         #4- make oss bucket with eachfolder with if condation to check if the bucket is exist or not
         aliyun oss mb oss://$bucket --acl=public-read
         #5- sync each folder with a oss bucket
-        aliyun oss cp . oss://$bucket -r
+        aliyun oss cp . oss://$bucket -r --force
         cd ..
     done
 fi    
